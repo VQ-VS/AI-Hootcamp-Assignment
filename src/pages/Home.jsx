@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../client";
 import TaskCard from "../components/TaskCard";
 
-function Home() {
+function Home({ currentUser }) {
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -24,6 +24,32 @@ function Home() {
         setLoading(false);
     }
 
+    async function completeTask(taskId, completed) {
+        const { error } = await supabase
+            .from("tasks")
+            .update({ completed: completed })
+            .eq("id", taskId);
+
+        if (error) {
+            console.error("Error updating task:", error);
+            return;
+        }
+
+        getTasks();
+    }
+    async function deleteTask(taskId) {
+        const { error } = await supabase
+            .from("tasks")
+            .delete()
+            .eq("id", taskId);
+
+        if (error) {
+            console.error("Error deleting task:", error);
+            return;
+        }
+
+        getTasks();
+    }
     useEffect(() => {
         getTasks();
     }, []);
@@ -35,21 +61,17 @@ function Home() {
     return (
         <div className="app">
             <header>
-                <h1>Group Task Board</h1>
-                <p>
-                    Work together and keep each other motivated!
-                </p>
+                <h1>🎯 Group Task Board</h1>
+                <p>Work together and keep each other motivated!</p>
             </header>
 
             <main>
                 <div className="task-summary">
                     <p>Total Tasks: {tasks.length}</p>
-
                     <p>
                         Completed:{" "}
                         {tasks.filter((task) => task.completed).length}
                     </p>
-
                     <p>
                         Remaining:{" "}
                         {tasks.filter((task) => !task.completed).length}
@@ -61,6 +83,9 @@ function Home() {
                         <TaskCard
                             key={task.id}
                             task={task}
+                            currentUser={currentUser}
+                            onComplete={completeTask}
+                            onDelete={deleteTask}
                         />
                     ))}
                 </div>

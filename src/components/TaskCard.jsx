@@ -1,12 +1,16 @@
 import "./card.css";
 
-
-function TaskCard({ task, currentUser, onComplete, onEdit, onDelete }) {
+function TaskCard({
+    task,
+    currentUser,
+    onComplete,
+    onEdit,
+    onDelete
+}) {
     const isOwner = currentUser?.id === task.user_id;
 
     return (
         <div className="task-card">
-
             <h2>{task.title}</h2>
 
             <p>{task.description}</p>
@@ -25,8 +29,13 @@ function TaskCard({ task, currentUser, onComplete, onEdit, onDelete }) {
 
             {isOwner && (
                 <div className="task-actions">
-                    {!task.completed && (
-                        <button onClick={() => onComplete(task.id)}>
+
+                    {task.completed ? (
+                        <button onClick={() => onComplete(task.id, false)}>
+                            Uncomplete
+                        </button>
+                    ) : (
+                        <button onClick={() => onComplete(task.id, true)}>
                             Complete
                         </button>
                     )}
@@ -38,9 +47,9 @@ function TaskCard({ task, currentUser, onComplete, onEdit, onDelete }) {
                     <button onClick={() => onDelete(task.id)}>
                         Delete
                     </button>
+
                 </div>
             )}
-
         </div>
     );
 }
