@@ -1,27 +1,30 @@
-
 .task-card {
     border: 2px solid #333;
-    border-radius: 10px;
-    padding: 20px;
-    width: 300px;
-    min-height: 180px;
+    border-radius: 12px;
+    padding: 22px;
     background-color: white;
-    box-shadow: 3px 3px 0px #333;
+    min-height: 200px;
+    box-shadow: 4px 4px 0px #333;
 }
 
 .task-card h2 {
-    margin-top: 0;
-    margin-bottom: 10px;
+    margin: -22px -22px 18px -22px;
+    padding: 16px 22px;
+    background-color: #b3d5d8;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    font-size: 22px;
 }
 
 .task-card p {
-    margin: 8px 0;
+    margin: 10px 0;
+    color: #444;
 }
 
 .task-actions {
     display: flex;
     gap: 8px;
-    margin-top: 15px;
+    margin-top: 18px;
 }
 
 .task-actions button {
@@ -29,8 +32,10 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    background-color: #222;
+    color: white;
 }
 
 .task-actions button:hover {
-    opacity: 0.8;
+    background-color: #444;
 }

@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #222;
+}
+
+/* Navigation */
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 18px;
+    background-color: #222;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: #61dafb;
+}
+
+/* Main app */
+
+.app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+header {
+    text-align: center;
+    background-color: white;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    border: 2px solid #333;
+    box-shadow: 4px 4px 0px #333;
+}
+
+header h1 {
+    margin: 0 0 10px 0;
+    font-size: 36px;
+    color: #222;
+}
+
+header p {
+    margin: 0;
+    color: #666;
+    font-size: 17px;
+}
+/* Task summary */
+
+.task-summary {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.task-summary p {
+    background-color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px #ccc;
+}
+
+/* Task cards */
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+
+
+
+/* Authentication pages */
+
+.auth-page {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 60px;
+}
+
+.auth-card h1 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #222;
+    font-size: 50px;
+}
+
+.auth-card h1 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.auth-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-card label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.auth-card input {
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.auth-card button {
+    padding: 11px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.auth-card button:hover {
+    background-color: #444;
+}
+
+.auth-card p {
+    text-align: center;
+    color: #555;
+}
+
+.auth-card a {
+    color: #0066cc;
+    font-weight: bold;
+}
+

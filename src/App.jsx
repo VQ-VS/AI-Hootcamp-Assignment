@@ -1,111 +1,100 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { supabase } from "./client";
-import TaskCard from "./components/TaskCard";
+
+import Home from "./pages/Home";
+import CreateTask from "./pages/CreateTask";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
 import "./App.css";
 
 function App() {
-    const [tasks, setTasks] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    async function getTasks() {
-        const { data, error } = await supabase
-            .from("tasks")
-            .select("*")
-            .order("created_at", { ascending: false });
-
-        if (error) {
-            console.error("Error getting tasks:", error);
-        } else {
-            setTasks(data);
-        }
-
-        setLoading(false);
-    }
+    const [currentUser, setCurrentUser] = useState(null);
 
     useEffect(() => {
-        getTasks();
+        getUser();
+
+        const { data: listener } = supabase.auth.onAuthStateChange(
+            (_event, session) => {
+                setCurrentUser(session?.user ?? null);
+            }
+        );
+
+        return () => {
+            listener.subscription.unsubscribe();
+        };
     }, []);
 
-    async function completeTask(taskId) {
-        const { error } = await supabase
-            .from("tasks")
-            .update({ completed: true })
-            .eq("id", taskId);
+    async function getUser() {
+        const {
+            data: { user },
+        } = await supabase.auth.getUser();
 
-        if (error) {
-            console.error("Error completing task:", error);
-            return;
-        }
-
-        getTasks();
+        setCurrentUser(user);
     }
 
-    async function deleteTask(taskId) {
-        const { error } = await supabase
-            .from("tasks")
-            .delete()
-            .eq("id", taskId);
-
-        if (error) {
-            console.error("Error deleting task:", error);
-            return;
-        }
-
-        getTasks();
-    }
-
-    function editTask(task) {
-        console.log("Edit task:", task);
-    }
-
-    if (loading) {
-        return <h1>Loading tasks...</h1>;
+    async function handleLogout() {
+        await supabase.auth.signOut();
+        setCurrentUser(null);
     }
 
     return (
-        <div className="app">
+        <BrowserRouter>
+            <nav>
+                <Link className="nav-title" to="/">
+                    🎯 Task Board
+                </Link>
 
-            <header>
-                <h1>🎯 Group Task Board</h1>
+                <Link to="/">
+                    Home
+                </Link>
 
-                <p>
-                    Work together and keep each other motivated!
-                </p>
-            </header>
+                {currentUser && (
+                    <Link to="/create">
+                        Create Task
+                    </Link>
+                )}
 
-            <main>
+                {currentUser ? (
+                    <button onClick={handleLogout}>
+                        Logout
+                    </button>
+                ) : (
+                    <>
+                        <Link to="/login">
+                            Login
+                        </Link>
 
-                <div className="task-summary">
-                    <p>Total Tasks: {tasks.length}</p>
+                        <Link to="/register">
+                            Register
+                        </Link>
+                    </>
+                )}
+            </nav>
 
-                    <p>
-                        Completed:{" "}
-                        {tasks.filter((task) => task.completed).length}
-                    </p>
+            <Routes>
+                <Route
+                    path="/"
+                    element={<Home currentUser={currentUser} />}
+                />
 
-                    <p>
-                        Remaining:{" "}
-                        {tasks.filter((task) => !task.completed).length}
-                    </p>
-                </div>
+                <Route
+                    path="/create"
+                    element={<CreateTask currentUser={currentUser} />}
+                />
 
-                <div className="task-grid">
+                <Route
+                    path="/login"
+                    element={<Login onLogin={setCurrentUser} />}
+                />
 
-                    {tasks.map((task) => (
-                        <TaskCard
-                            key={task.id}
-                            task={task}
-                            onComplete={completeTask}
-                            onEdit={editTask}
-                            onDelete={deleteTask}
-                        />
-                    ))}
-
-                </div>
-
-            </main>
-
-        </div>
+                <Route
+                    path="/register"
+                    element={<Register />}
+                />
+            </Routes>
+        </BrowserRouter>
     );
 }
 
