@@ -39,3 +39,20 @@
 .task-actions button:hover {
     background-color: #444;
 }
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    justify-items: center;
+}
+
+.task-card {
+    width: 300px;
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 22px;
+    background-color: white;
+    min-height: 200px;
+    box-shadow: 4px 4px 0px #333;
+}

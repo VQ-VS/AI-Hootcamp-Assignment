@@ -1,0 +1,107 @@
+.login-page {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px #ccc;
+}
+
+.login-page h1 {
+    text-align: center;
+}
+
+.login-page input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.login-page button {
+    width: 100%;
+    padding: 10px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auth-card {
+    width: 400px;
+    background-color: white;
+    border: 2px solid #333;
+    border-radius: 12px;
+    box-shadow: 4px 4px 0px #333;
+    overflow: hidden;
+    padding: 30px;
+}
+
+
+
+
+
+.auth-card {
+    width: 400px;
+    background-color: white;
+    border: 2px solid #333;
+    border-radius: 12px;
+    box-shadow: 4px 4px 0px #333;
+    overflow: hidden;
+}
+
+.auth-card h1 {
+    margin: 0;
+    padding: 20px;
+    background-color: #222;
+    color: white;
+    text-align: center;
+    font-size: 28px;
+}
+
+.auth-card form {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-card label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #222;
+}
+
+.auth-card input {
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.auth-card button {
+    padding: 11px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.auth-card button:hover {
+    background-color: #444;
+}
+
+.auth-card p {
+    text-align: center;
+    color: #555;
+    padding: 0 20px;
+}
+
+.auth-card a {
+    color: #0066cc;
+    font-weight: bold;
+}

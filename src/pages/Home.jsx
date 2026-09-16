@@ -35,7 +35,7 @@ function Home() {
     return (
         <div className="app">
             <header>
-                <h1>🎯 Group Task Board</h1>
+                <h1>Group Task Board</h1>
                 <p>
                     Work together and keep each other motivated!
                 </p>

@@ -42,9 +42,7 @@ function App() {
     return (
         <BrowserRouter>
             <nav>
-                <Link className="nav-title" to="/">
-                    🎯 Task Board
-                </Link>
+
 
                 <Link to="/">
                     Home

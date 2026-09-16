@@ -33,7 +33,7 @@ function Register() {
         <div className="auth-page">
             <div className="auth-card">
                 <h1>Create Account</h1>
-
+                <br></br><br></br>
                 <form onSubmit={handleRegister}>
                     <label>Email</label>
                     <input
@@ -42,7 +42,7 @@ function Register() {
                         onChange={(event) => setEmail(event.target.value)}
                         required
                     />
-
+                    <br></br><br></br>
                     <label>Password</label>
                     <input
                         type="password"
@@ -50,7 +50,7 @@ function Register() {
                         onChange={(event) => setPassword(event.target.value)}
                         required
                     />
-
+                    <br></br><br></br>
                     <button type="submit">
                         Register
                     </button>
