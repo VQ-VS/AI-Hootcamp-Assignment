@@ -1,16 +1,67 @@
-# React + Vite
+# Group Task Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Description
 
-Currently, two official plugins are available:
+Group Task Board is a web application designed to help a group keep track of tasks and stay motivated.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Users can create an account, log in, and create tasks for the group to see. Each task includes a title, description, completion status, and creation date.
 
-## React Compiler
+Only the user who created a task can modify it. Task creators can:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Create tasks
+- Complete tasks
+- Uncomplete tasks
+- Edit tasks
+- Delete tasks
 
-## Expanding the Oxlint configuration
+Other users can still view the tasks but cannot modify someone else's tasks.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+The application uses React for the frontend and Supabase for the database and user authentication.
+
+## Technologies Used
+
+- React
+- Vite
+- JavaScript
+- Supabase
+- React Router
+- CSS
+
+## Deployed Application
+
+The application will be deployed using Netlify.
+
+**Deployed application:**  
+[https://grouptaskshootcamp.netlify.app/]
+
+## Features
+
+- User registration
+- User login and logout
+- View group tasks
+- Create new tasks
+- Edit tasks
+- Complete and uncomplete tasks
+- Delete tasks
+- User-specific task permissions
+- Responsive task card layout
+
+## Database
+
+The application uses a Supabase database to store tasks and user information.
+
+Each task contains:
+
+- Task ID
+- User ID
+- Title
+- Description
+- Completion status
+- Creation date
+- Username
+
+Supabase Row Level Security is used to make sure users can only modify tasks that they created.
+
+## Demo Video
+
+[https://youtu.be/I8DYxccTENE]
