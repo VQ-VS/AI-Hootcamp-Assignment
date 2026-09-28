@@ -1,18 +1,22 @@
 import "./card.css";
+import { Link } from "react-router-dom";
+
 
 function TaskCard({
     task,
     currentUser,
     onComplete,
-    onEdit,
     onDelete
 }) {
+
     const isOwner = currentUser?.id === task.user_id;
 
     return (
-        <div className="task-card">
+        <div className={`task-card ${task.completed ? "completed-task" : ""}`}>
             <h2>{task.title}</h2>
-
+            <p>
+                Posted by: <strong>{task.username}</strong>
+            </p>
             <p>{task.description}</p>
 
             <p>
@@ -40,9 +44,9 @@ function TaskCard({
                         </button>
                     )}
 
-                    <button onClick={() => onEdit(task)}>
-                        Edit
-                    </button>
+                    <Link to={`/edit/${task.id}`}>
+                        <button>Edit</button>
+                    </Link>
 
                     <button onClick={() => onDelete(task.id)}>
                         Delete

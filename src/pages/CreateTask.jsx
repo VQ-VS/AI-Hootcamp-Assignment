@@ -23,6 +23,7 @@ function CreateTask({ currentUser }) {
                 title: title,
                 description: description,
                 user_id: currentUser.id,
+                username: currentUser.user_metadata.username,
                 completed: false
             });
 
@@ -35,9 +36,12 @@ function CreateTask({ currentUser }) {
         navigate("/");
     }
 
+
     return (
         <div className="auth-page">
             <div className="auth-card">
+
+                
                 <h1>Create Task</h1>
 
                 <form onSubmit={handleCreate}>

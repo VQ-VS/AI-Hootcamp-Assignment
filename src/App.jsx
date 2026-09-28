@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import CreateTask from "./pages/CreateTask";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import EditTask from "./pages/EditTask";
 
 import "./App.css";
 
@@ -55,9 +56,9 @@ function App() {
                 )}
 
                 {currentUser ? (
-                    <button onClick={handleLogout}>
-                        Logout
-                    </button>
+                  <button className="logout-button" onClick={handleLogout}>
+                      Logout
+                  </button>
                 ) : (
                     <>
                         <Link to="/login">
@@ -90,6 +91,11 @@ function App() {
                 <Route
                     path="/register"
                     element={<Register />}
+                />
+
+                <Route
+                    path="/edit/:id"
+                    element={<EditTask currentUser={currentUser} />}
                 />
             </Routes>
         </BrowserRouter>

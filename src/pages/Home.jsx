@@ -61,8 +61,8 @@ function Home({ currentUser }) {
     return (
         <div className="app">
             <header>
-                <h1>🎯 Group Task Board</h1>
-                <p>Work together and keep each other motivated!</p>
+                <h1>Group Task Board</h1>
+                <p>Keep track of your own tasks and see others!</p>
             </header>
 
             <main>
